@@ -46,5 +46,6 @@ public class JogoController {
 
     public List<Jogo> listarJogos() {
         return jogos;
+        //teste
     }
 }
