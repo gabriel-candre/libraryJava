@@ -81,33 +81,52 @@ public class Menu {
     }
 
     public void gerenciamento(int opcao) {
-        switch (opcao) {
-            case 1:
-                menuFilmes();
-                int opcaoFilme = sc.nextInt();
-                switch (opcaoFilme) {
-                    case 1:
-                        System.out.print("ID filme: ");
-                        int idFilme = sc.nextInt();
-                        System.out.print("Título: ");
-                        String tituloFilme = sc.nextLine();
-                        sc.nextLine();
-                        System.out.print("Ano: ");
-                        int anoFilme = sc.nextInt();
-                        System.out.print("Gênero: ");
-                        String generoFilme = sc.nextLine();
-                        System.out.print("Diretor: ");
-                        String diretorFilme = sc.nextLine();
-                        System.out.print("Duração (min): ");
-                        int duracao = sc.nextInt();
-                        System.out.print("Publicadora: ");
-                        String publicadora = sc.nextLine();
-                        Filme f = new Filme(tituloFilme, anoFilme, generoFilme, Status.valueOf("Não Iniciado"), idFilme, duracao, diretorFilme,
-                                publicadora);
-                        filmeController.adicionarFilme(f);
-                        break;
-                }
-                break;
+        while(opcao != 0) {
+            switch (opcao) {
+                case 1:
+                    menuFilmes();
+                    int opcaoFilme = sc.nextInt();
+                    switch (opcaoFilme) {
+                        case 1:
+                            System.out.print("ID filme: ");
+                            int idFilme = sc.nextInt();
+                            System.out.print("Título: ");
+                            String tituloFilme = sc.nextLine();
+                            sc.nextLine();
+                            System.out.print("Ano: ");
+                            int anoFilme = sc.nextInt();
+                            System.out.print("Gênero: ");
+                            String generoFilme = sc.nextLine();
+                            System.out.print("Diretor: ");
+                            String diretorFilme = sc.nextLine();
+                            System.out.print("Duração (min): ");
+                            int duracao = sc.nextInt();
+                            System.out.print("Publicadora: ");
+                            String publicadora = sc.nextLine();
+                            Filme f = new Filme(tituloFilme, anoFilme, generoFilme, Status.valueOf("Não Iniciado"), idFilme, duracao, diretorFilme,
+                                    publicadora);
+                            filmeController.adicionarFilme(f);
+                            break;
+                        case 2:
+                            System.out.print("Id do filme a remover: ");
+                            int idFilmeRemove = sc.nextInt();
+                            filmeController.removerFilme(idFilmeRemove);
+                            break;
+                        default:
+                            System.out.println("Opção inválida! Tente novamente!");
+                            menuFilmes();
+                            opcaoFilme = sc.nextInt();
+                            break;
+                    }
+                    break;
+                default:
+                    System.out.println("Opção inválida! Tente novamente!");
+                    menuPrincipal();
+                    opcao = sc.nextInt();
+                    break;
+            }
+         menuPrincipal();
+         opcao = sc.nextInt();
         }
         sc.close();
     }
