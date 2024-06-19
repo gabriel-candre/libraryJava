@@ -2,6 +2,7 @@ package Enums;
 
 public enum Status {
 
+    ADICIONADO("Adicionado"),
     FINALIZADO("Finalizado"),
     FINALIZADA("Finalizada"),
     EM_ANDAMENTO("Em Andamento"),

@@ -49,6 +49,7 @@ public class FilmeController {
     }
 
     public void consumirFilme(int id) {
+
         Filme filme = getFilme(id);
         if (filme != null) {
             System.out.println(filme.consumir());

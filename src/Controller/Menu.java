@@ -103,7 +103,7 @@ public class Menu {
                             int duracao = sc.nextInt();
                             System.out.print("Publicadora: ");
                             String publicadora = sc.nextLine();
-                            Filme f = new Filme(tituloFilme, anoFilme, generoFilme, Status.valueOf("Não Iniciado"), idFilme, duracao, diretorFilme,
+                            Filme f = new Filme(tituloFilme, anoFilme, generoFilme, Status.valueOf("Adicionado"), idFilme, duracao, diretorFilme,
                                     publicadora);
                             filmeController.adicionarFilme(f);
                             break;
