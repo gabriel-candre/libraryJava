@@ -38,6 +38,7 @@ public class Menu {
         System.out.println("2 - Remover filme");
         System.out.println("3 - Buscar filme por id");
         System.out.println("4 - Listar todos os filmes");
+        System.out.println("5 - Editar um filme");
         System.out.println("0 - Finalizar");
         System.out.print("Opção: ");
     }
@@ -141,6 +142,12 @@ public class Menu {
                                 break;
                             case 4:
                                 filmeController.listarFilmes();
+                                break;
+                            case 5:
+                                System.out.print("ID a do filme a ser atualizado: ");
+                                int idAtualiza = sc.nextInt();
+                                filmeController.menuAtualizaStatus();
+                                filmeController.atualizarStatus(idAtualiza);
                                 break;
                             default:
                                 System.out.println("Opção inválida! Tente novamente!");
