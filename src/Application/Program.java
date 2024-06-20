@@ -17,8 +17,10 @@ public class Program {
         Menu menu = new Menu();
 
         menu.menuPrincipal();
-        menu.gerenciamento(sc.nextInt());
-        quebra();
+        int opcao = sc.nextInt();
+        System.out.println("-----");
+        menu.gerenciamento(opcao);
+        System.out.println("-----");
         sc.close();
     }
 }

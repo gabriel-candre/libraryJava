@@ -1,15 +1,16 @@
 package Controller;
 
+import Entities.Filme;
 import Entities.Serie;
 import java.util.List;
 import java.util.ArrayList;
 
 public class SerieController {
 
-    private List<Serie> series;
+    private List<Serie> series = new ArrayList<>();
 
     public SerieController() {
-        series = new ArrayList<>();
+
     }
 
     public void adicionarSerie(Serie s) {
@@ -34,17 +35,26 @@ public class SerieController {
         }
     }
 
-    public Serie getSerie(int id) {
+    public String getSerie(int id) {
         for (Serie s : series) {
             if (s.getIdSerie() == id) {
-                return s;
+                return s.toString();
             }
         }
         System.out.println("Série não encontrada!");
         return null;
     }
 
-    public List<Serie> listarSeries() {
-        return series;
+    public String listarSeries() {
+        if (series.isEmpty()) {
+            return "Nenhuma série encontrada!";
+        } else {
+            for (Serie s : series) {
+                System.out.println(s.toString());
+                System.out.println("-----");
+            }
+        }
+
+        return null;
     }
 }

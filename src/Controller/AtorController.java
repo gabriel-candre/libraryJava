@@ -1,14 +1,16 @@
 package Controller;
 
 import Entities.Ator;
+import Entities.Filme;
+
 import java.util.List;
 import java.util.ArrayList;
 
 public class AtorController {
-    private List <Ator> atores;
+    private List <Ator> atores = new ArrayList<>();
 
     public AtorController() {
-        atores = new ArrayList<>();
+
     }
 
     public void adicionarAtor(Ator a) {
@@ -33,17 +35,26 @@ public class AtorController {
         }
     }
 
-    public Ator getAtor(int id) {
+    public String getAtor(int id) {
         for (Ator a : atores){
             if (a.getIdAtor() == id) {
-                return a;
+                return a.toString();
             }
         }
         System.out.println("Ator não encontrado!");
         return null;
     }
 
-    public List<Ator> listarAtores() {
-        return atores;
+    public String listarAtores() {
+        if (atores.isEmpty()) {
+            return "Nenhum ator encontrado!";
+        } else {
+            for (Ator a : atores) {
+                System.out.println(a.toString());
+                System.out.println("-----");
+            }
+        }
+
+        return null;
     }
 }

@@ -8,6 +8,12 @@ public class Ator extends Pessoa{
     private Integer idAtor;
     private List<Filme> filmes = new ArrayList<>();
 
+    public Ator(String nome, int anoNascimento, String nacionalidade, Integer idAtor) {
+        super(nome, anoNascimento, nacionalidade);
+        this.idAtor = idAtor;
+
+    }
+
     public Ator(String nome, int anoNascimento, String nacionalidade, Integer idAtor, List<Filme> filmes) {
         super(nome, anoNascimento, nacionalidade);
         this.idAtor = idAtor;

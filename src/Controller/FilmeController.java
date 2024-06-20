@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FilmeController {
-    private List<Filme> filmes;
+    private List<Filme> filmes = new ArrayList<>();
 
     public FilmeController() {
-        filmes = new ArrayList<>();
+
     }
 
     public void adicionarFilme(Filme filme) {
@@ -33,25 +33,27 @@ public class FilmeController {
         }
     }
 
-    public Filme getFilme(int id) {
+    public String getFilme(int id) {
 
         for (Filme f : filmes) {
             if (f.getIdFilme() == id) {
-                return f;
+                return f.toString();
             }
         }
         System.out.println("Filme não encontrado!");
         return null;
     }
 
-    public List<Filme> listarFilmes() {
-        return filmes;
-    }
-
-    public void consumirFilme(int id) {
-        Filme filme = getFilme(id);
-        if (filme != null) {
-            System.out.println(filme.consumir());
+    public String listarFilmes() {
+        if (filmes.isEmpty()) {
+            return "Nenhum filme encontrado!";
+        } else {
+            for (Filme f : filmes) {
+                System.out.println(f.toString());
+                System.out.println("-----");
+            }
         }
+
+        return null;
     }
 }

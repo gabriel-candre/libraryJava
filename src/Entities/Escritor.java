@@ -8,6 +8,11 @@ public class Escritor extends Pessoa{
     private Integer idEscritor;
     private List<Livro> obras = new ArrayList<>();
 
+    public Escritor(String nome, int anoNascimento, String nacionalidade, Integer idEscritor) {
+        super(nome, anoNascimento, nacionalidade);
+        this.idEscritor = idEscritor;
+    }
+
     public Escritor(String nome, int anoNascimento, String nacionalidade, Integer idEscritor, List<Livro> obras) {
         super(nome, anoNascimento, nacionalidade);
         this.idEscritor = idEscritor;

@@ -1,15 +1,16 @@
 package Controller;
 
+import Entities.Filme;
 import Entities.Jogo;
 import java.util.List;
 import java.util.ArrayList;
 
 public class JogoController {
 
-    private List<Jogo> jogos;
+    private List<Jogo> jogos = new ArrayList<>();
 
     public JogoController() {
-        jogos = new ArrayList<>();
+
     }
 
     public void adicionarJogo(Jogo j) {
@@ -34,18 +35,26 @@ public class JogoController {
         }
     }
 
-    public Jogo getJogo(int id) {
+    public String getJogo(int id) {
         for (Jogo j : jogos) {
             if (j.getIdJogo() == id) {
-                return j;
+                return j.toString();
             }
         }
         System.out.println("Jogo não encontrado!");
         return null;
     }
 
-    public List<Jogo> listarJogos() {
-        return jogos;
+    public String listarJogos() {
+        if (jogos.isEmpty()) {
+            return "Nenhum jogo encontrado!";
+        } else {
+            for (Jogo j : jogos) {
+                System.out.println(j.toString());
+                System.out.println("-----");
+            }
+        }
 
+        return null;
     }
 }
