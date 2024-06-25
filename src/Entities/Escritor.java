@@ -23,7 +23,8 @@ public class Escritor extends Pessoa{
     @Override
     public String toString() {
         return "Nome: " + getNome()
-                +"\nPaís: " + getNacionalidade();
+                +"\nAno de nascimento: " + getAnoNascimento()
+                +"\nPaís de origem: " + getNacionalidade();
     }
 
 }

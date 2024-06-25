@@ -414,7 +414,7 @@ public class Menu {
                                 int anoAtor = sc.nextInt();
                                 sc.nextLine();
 
-                                System.out.print("Nacionalidade: ");
+                                System.out.print("País de nascimento: ");
                                 String nacionalidadeAtor = sc.nextLine();
                                 System.out.println("-----");
 
@@ -466,7 +466,7 @@ public class Menu {
                                 int anoEscritor = sc.nextInt();
                                 sc.nextLine();
 
-                                System.out.print("Nacionalidade: ");
+                                System.out.print("País de nascimento: ");
                                 String nacionalidadeEscritor = sc.nextLine();
                                 System.out.println("-----");
 
