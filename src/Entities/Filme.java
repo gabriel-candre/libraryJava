@@ -51,6 +51,10 @@ public class Filme extends Midia implements ConsumirMidia{
         this.publicadora = publicadora;
     }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public String consumir() {
         this.status = Status.valueOf("Finalizado");

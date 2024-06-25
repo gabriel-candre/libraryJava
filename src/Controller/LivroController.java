@@ -2,6 +2,8 @@ package Controller;
 
 import Entities.Filme;
 import Entities.Livro;
+import Enums.Status;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -43,6 +45,22 @@ public class LivroController {
         }
         System.out.println("Livro não encontrado!");
         return null;
+    }
+
+    public void editarLivro(int id, Status novoStatus) {
+        boolean livroEncontrado = false;
+
+        for (Livro l : livros) {
+            if (l.getIdLivro() == id) {
+                l.setStatus(novoStatus);
+                livroEncontrado = true;
+                System.out.println("Status atualizado!");
+                break;
+            }
+        }
+        if (!livroEncontrado) {
+            System.out.println("Livro não encontrado");
+        }
     }
 
     public String listarLivros() {

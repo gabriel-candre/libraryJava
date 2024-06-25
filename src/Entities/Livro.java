@@ -41,10 +41,24 @@ public class Livro extends Midia implements ConsumirMidia{
         this.editora = editora;
     }
 
+    public void setStatus (Status status) {
+        this.status = status;
+    }
+
     @Override
     public String consumir() {
         this.status = Status.valueOf("Finalizado");
         return "Livro - " + getTitulo() + " - Finalizado!";
+    }
+
+    @Override
+    public String toString() {
+        return "Título: " + getTitulo()
+                +"\nAno: " + getAno()
+                +"\nGênero: " + getGenero()
+                +"\nPáginas: " + getPaginas()
+                +"\nEditora: " + getEditora()
+                +"\nStatus: " + getStatus();
     }
 
 }

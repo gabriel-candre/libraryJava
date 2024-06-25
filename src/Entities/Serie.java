@@ -41,6 +41,10 @@ public class Serie extends Midia implements ConsumirMidia{
         this.episodios = episodios;
     }
 
+    public void setStatus (Status status) {
+        this.status = status;
+    }
+
     @Override
     public String consumir() {
         this.status = Status.valueOf("Finalizada");

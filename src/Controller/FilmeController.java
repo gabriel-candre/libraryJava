@@ -1,6 +1,8 @@
 package Controller;
 
 import Entities.Filme;
+import Enums.Status;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -44,6 +46,22 @@ public class FilmeController {
         }
         System.out.println("Filme não encontrado!");
         return null;
+    }
+
+    public void editarFilme(int id, Status novoStatus) {
+        boolean filmeEncontrado = false;
+
+        for (Filme f : filmes) {
+            if (f.getIdFilme() == id) {
+                f.setStatus(novoStatus);
+                filmeEncontrado = true;
+                System.out.println("Status atualizado!");
+                break;
+            }
+        }
+        if (!filmeEncontrado) {
+            System.out.println("Filme não encontrado");
+        }
     }
 
     public String listarFilmes() {

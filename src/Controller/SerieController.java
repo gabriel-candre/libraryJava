@@ -2,6 +2,8 @@ package Controller;
 
 import Entities.Filme;
 import Entities.Serie;
+import Enums.Status;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -43,6 +45,22 @@ public class SerieController {
         }
         System.out.println("Série não encontrada!");
         return null;
+    }
+
+    public void editarSerie(int id, Status novoStatus) {
+        boolean serieEncontrada = false;
+
+        for (Serie s : series) {
+            if (s.getIdSerie() == id) {
+                s.setStatus(novoStatus);
+                serieEncontrada = true;
+                System.out.println("Status atualizado!");
+                break;
+            }
+        }
+        if (!serieEncontrada) {
+            System.out.println("Série não encontrada");
+        }
     }
 
     public String listarSeries() {

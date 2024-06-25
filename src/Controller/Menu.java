@@ -35,6 +35,7 @@ public class Menu {
         System.out.println("2 - Remover filme");
         System.out.println("3 - Buscar filme por id");
         System.out.println("4 - Listar todos os filmes");
+        System.out.println("5 - Editar status de um filme");
         System.out.println("0 - Finalizar");
         System.out.print("Opção: ");
     }
@@ -44,6 +45,7 @@ public class Menu {
         System.out.println("2 - Remover jogo");
         System.out.println("3 - Buscar jogo por id");
         System.out.println("4 - Listar todos os jogos");
+        System.out.println("5 - Editar status de um jogo");
         System.out.println("0 - Finalizar");
         System.out.print("Opção: ");
     }
@@ -53,6 +55,7 @@ public class Menu {
         System.out.println("2 - Remover livro");
         System.out.println("3 - Buscar livro por id");
         System.out.println("4 - Listar todos os livros");
+        System.out.println("5 - Editar status de um livro");
         System.out.println("0 - Finalizar");
         System.out.print("Opção: ");
     }
@@ -61,7 +64,8 @@ public class Menu {
         System.out.println("1 - Adicionar série");
         System.out.println("2 - Remover série");
         System.out.println("3 - Buscar série por id");
-        System.out.println("4 - Listar todos os série");
+        System.out.println("4 - Listar todas as séries");
+        System.out.println("5 - Editar status de uma série");
         System.out.println("0 - Finalizar");
         System.out.print("Opção: ");
     }
@@ -139,6 +143,23 @@ public class Menu {
                             case 4:
                                 filmeController.listarFilmes();
                                 break;
+                            case 5:
+                                System.out.print("Id do filme: ");
+                                int idEdicao = sc.nextInt();
+                                sc.nextLine();
+
+                                System.out.println("Novo status: ");
+                                for(Status s : Status.values()) {
+                                    System.out.println(s.ordinal() + " - " + s.getDescricao());
+                                }
+                                System.out.print("Opção: ");
+                                int status = sc.nextInt();
+                                sc.nextLine();
+
+                                Status novoStatus = Status.values()[status];
+                                filmeController.editarFilme(idEdicao, novoStatus);
+                                System.out.println("-----");
+                                break;
                             default:
                                 System.out.println("Opção inválida! Tente novamente!");
                                 menuFilmes();
@@ -194,6 +215,23 @@ public class Menu {
                             case 4:
                                 jogoController.listarJogos();
                                 break;
+                            case 5:
+                                System.out.print("Id do jogo: ");
+                                int idEdicao = sc.nextInt();
+                                sc.nextLine();
+
+                                System.out.println("Novo status: ");
+                                for(Status s : Status.values()) {
+                                    System.out.println(s.ordinal() + " - " + s.getDescricao());
+                                }
+                                System.out.print("Opção: ");
+                                int status = sc.nextInt();
+                                sc.nextLine();
+
+                                Status novoStatus = Status.values()[status];
+                                jogoController.editarJogo(idEdicao, novoStatus);
+                                System.out.println("-----");
+                                break;
                             default:
                                 System.out.println("Opção Inválida! Tente novamente!");
                                 menuJogos();
@@ -215,21 +253,21 @@ public class Menu {
                             case 1:
                                 System.out.print("ID Livro: ");
                                 int idLivro = sc.nextInt();
-                                sc.nextInt();
+                                sc.nextLine();
 
                                 System.out.print("Título: ");
                                 String tituloLivro = sc.nextLine();
 
                                 System.out.print("Ano: ");
                                 int anoLivro = sc.nextInt();
-                                sc.nextInt();
+                                sc.nextLine();
 
                                 System.out.print("Gênero: ");
                                 String generoLivro = sc.nextLine();
 
                                 System.out.print("Páginas: ");
                                 int paginas = sc.nextInt();
-                                sc.nextInt();
+                                sc.nextLine();
 
                                 System.out.print("Editora: ");
                                 String editora = sc.nextLine();
@@ -245,13 +283,30 @@ public class Menu {
                                 System.out.println("-----");
                                 break;
                             case 3:
-                                System.out.print("ID do livro");
+                                System.out.print("ID do livro: ");
                                 int idBusca = sc.nextInt();
                                 System.out.println(livroController.getLivro(idBusca));
                                 System.out.println("-----");
                                 break;
                             case 4:
                                 livroController.listarLivros();
+                                break;
+                            case 5:
+                                System.out.print("Id do livro: ");
+                                int idEdicao = sc.nextInt();
+                                sc.nextLine();
+
+                                System.out.println("Novo status: ");
+                                for(Status s : Status.values()) {
+                                    System.out.println(s.ordinal() + " - " + s.getDescricao());
+                                }
+                                System.out.print("Opção: ");
+                                int status = sc.nextInt();
+                                sc.nextLine();
+
+                                Status novoStatus = Status.values()[status];
+                                livroController.editarLivro(idEdicao, novoStatus);
+                                System.out.println("-----");
                                 break;
                             default:
                                 System.out.println("Opção inválida! Tente novamente!");
@@ -282,12 +337,14 @@ public class Menu {
                                 System.out.print("Ano: ");
                                 int anoSerie = sc.nextInt();
                                 sc.nextLine();
+
                                 System.out.print("Gênero: ");
                                 String generoSerie = sc.nextLine();
 
                                 System.out.print("Temporada: ");
                                 int temporada = sc.nextInt();
                                 sc.nextLine();
+
                                 System.out.print("Episódios: ");
                                 int episodios = sc.nextInt();
                                 System.out.println("-----");
@@ -309,6 +366,23 @@ public class Menu {
                                 break;
                             case 4:
                                 serieController.listarSeries();
+                                break;
+                            case 5:
+                                System.out.print("Id da série: ");
+                                int idEdicao = sc.nextInt();
+                                sc.nextLine();
+
+                                System.out.println("Novo status: ");
+                                for(Status status : Status.values()) {
+                                    System.out.println(status.ordinal() + " - " + status.getDescricao());
+                                }
+                                System.out.print("Opção: ");
+                                int status = sc.nextInt();
+                                sc.nextLine();
+
+                                Status novoStatus = Status.values()[status];
+                                serieController.editarSerie(idEdicao, novoStatus);
+                                System.out.println("-----");
                                 break;
                             default:
                                 System.out.println("Opção inválida! Tente Novamente!");

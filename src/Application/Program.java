@@ -20,7 +20,6 @@ public class Program {
         int opcao = sc.nextInt();
         System.out.println("-----");
         menu.gerenciamento(opcao);
-        System.out.println("-----");
         sc.close();
     }
 }
