@@ -41,6 +41,23 @@ public class Serie extends Midia implements ConsumirMidia{
         this.episodios = episodios;
     }
 
+    public String toFile() {
+        return getTitulo() + ";" + getAno() + ";" + getGenero() + ";" + getStatus() + ";" + getIdSerie() + ";" + getTemporada()
+                + ";" + getEpisodios();
+    }
+
+    public static Serie fromFile(String fileString) {
+        String[] fields = fileString.split(";");
+        String titulo = fields[0];
+        int ano = Integer.parseInt(fields[1]);
+        String genero = fields[2];
+        Status status = Status.valueOf(fields[3]);
+        int idSerie = Integer.parseInt(fields[4]);
+        int temporada = Integer.parseInt(fields[5]);
+        int episodios = Integer.parseInt(fields[6]);
+        return new Serie(titulo, ano, genero, status, idSerie, temporada, episodios);
+    }
+
     public void setStatus (Status status) {
         this.status = status;
     }

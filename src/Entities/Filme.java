@@ -55,6 +55,24 @@ public class Filme extends Midia implements ConsumirMidia{
         this.status = status;
     }
 
+    public String toFile() {
+        return getTitulo() + ";" + getAno() + ";" + getGenero() + ";" + getStatus() + ";" + getIdFilme() + ";" + getDuracao()
+                + ";" + getDiretor() + ";" + getPublicadora();
+    }
+
+    public static Filme fromFile(String fileString) {
+        String[] fields = fileString.split(";");
+        String titulo = fields[0];
+        int ano = Integer.parseInt(fields[1]);
+        String genero = fields[2];
+        Status status = Status.valueOf(fields[3]);
+        int idFilme = Integer.parseInt(fields[4]);
+        int duracao = Integer.parseInt(fields[5]);
+        String diretor = fields[6];
+        String publicadora = fields[7];
+        return new Filme(titulo, ano, genero, status, idFilme, duracao, diretor, publicadora);
+    }
+
     @Override
     public String consumir() {
         this.status = Status.valueOf("Finalizado");

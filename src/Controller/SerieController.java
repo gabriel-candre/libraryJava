@@ -4,19 +4,58 @@ import Entities.Filme;
 import Entities.Serie;
 import Enums.Status;
 
+import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
 
 public class SerieController {
 
     private List<Serie> series = new ArrayList<>();
+    private String arquivo = "series.txt";
 
     public SerieController() {
-
+        carregarSerie();
     }
 
     public void adicionarSerie(Serie s) {
         series.add(s);
+        salvarSerie();
+    }
+
+    private void salvarSerie() {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo))) {
+            for (Serie s : series) {
+                bw.write(s.toFile());
+                bw.newLine();
+            }
+        }catch (IOException e) {
+            System.out.println("Erro ao salvar: " + e.getMessage());
+        }
+    }
+
+    private void carregarSerie() {
+
+        File file = new File(arquivo);
+        if(!file.exists()) {
+            try {
+                file.createNewFile();
+                System.out.println("Arquivo criado: " + arquivo);
+            } catch(IOException e) {
+                System.out.println("Erro ao criar arquivo: " + e.getMessage());
+            }
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
+            String linha;
+            while((linha = br.readLine()) != null) {
+                Serie s = Serie.fromFile(linha);
+                series.add(s);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Arquivo não encontrado!");
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar series: " + e.getMessage());
+        }
     }
 
     public void removerSerie(int id) {
@@ -54,6 +93,7 @@ public class SerieController {
             if (s.getIdSerie() == id) {
                 s.setStatus(novoStatus);
                 serieEncontrada = true;
+                salvarSerie();
                 System.out.println("Status atualizado!");
                 break;
             }

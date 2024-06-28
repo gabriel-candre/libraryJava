@@ -36,7 +36,7 @@ public class Menu {
         System.out.println("3 - Buscar filme por id");
         System.out.println("4 - Listar todos os filmes");
         System.out.println("5 - Editar status de um filme");
-        System.out.println("0 - Finalizar");
+        System.out.println("0 - Voltar");
         System.out.print("Opção: ");
     }
 
@@ -46,7 +46,7 @@ public class Menu {
         System.out.println("3 - Buscar jogo por id");
         System.out.println("4 - Listar todos os jogos");
         System.out.println("5 - Editar status de um jogo");
-        System.out.println("0 - Finalizar");
+        System.out.println("0 - Voltar");
         System.out.print("Opção: ");
     }
 
@@ -56,7 +56,7 @@ public class Menu {
         System.out.println("3 - Buscar livro por id");
         System.out.println("4 - Listar todos os livros");
         System.out.println("5 - Editar status de um livro");
-        System.out.println("0 - Finalizar");
+        System.out.println("0 - Voltar");
         System.out.print("Opção: ");
     }
 
@@ -66,7 +66,7 @@ public class Menu {
         System.out.println("3 - Buscar série por id");
         System.out.println("4 - Listar todas as séries");
         System.out.println("5 - Editar status de uma série");
-        System.out.println("0 - Finalizar");
+        System.out.println("0 - Voltar");
         System.out.print("Opção: ");
     }
 
@@ -75,7 +75,7 @@ public class Menu {
         System.out.println("2 - Remover ator");
         System.out.println("3 - Buscar ator por id");
         System.out.println("4 - Listar todos os atores");
-        System.out.println("0 - Finalizar");
+        System.out.println("0 - Voltar");
         System.out.print("Opção: ");
     }
 
@@ -84,7 +84,7 @@ public class Menu {
         System.out.println("2 - Remover escritor");
         System.out.println("3 - Buscar escritor por id");
         System.out.println("4 - Listar todos os escritores");
-        System.out.println("0 - Finalizar");
+        System.out.println("0 - Voltar");
         System.out.print("Opção: ");
     }
 
@@ -151,6 +151,7 @@ public class Menu {
                                 System.out.println("Novo status: ");
                                 for(Status s : Status.values()) {
                                     System.out.println(s.ordinal() + " - " + s.getDescricao());
+
                                 }
                                 System.out.print("Opção: ");
                                 int status = sc.nextInt();
