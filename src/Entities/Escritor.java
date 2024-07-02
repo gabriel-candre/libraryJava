@@ -9,8 +9,8 @@ public class Escritor extends Pessoa{
 
     private Integer idEscritor;
 
-    public Escritor(String nome, int anoNascimento, String nacionalidade, int idEscritor) {
-        super(nome, anoNascimento, nacionalidade);
+    public Escritor(String nome, String dataNascimento, String nacionalidade, int idEscritor) {
+        super(nome, dataNascimento, nacionalidade);
         this.idEscritor = idEscritor;
     }
 
@@ -23,22 +23,22 @@ public class Escritor extends Pessoa{
     }
 
     public String toFile() {
-        return getNome() + ";" + getAnoNascimento() + ";" + getNacionalidade() + ";" +  getIdEscritor();
+        return getNome() + ";" + getDataNascimento() + ";" + getNacionalidade() + ";" +  getIdEscritor();
     }
 
     public static Escritor fromFile(String fileString) {
         String[] fields = fileString.split(";");
         String nome = fields[0];
-        int anoNascimento = Integer.parseInt(fields[1]);
+        String dataNascimento = fields[1];
         String nacionalidade = fields[2];
         int idEscritor = Integer.parseInt(fields[3]);
-        return new Escritor(nome, anoNascimento, nacionalidade, idEscritor);
+        return new Escritor(nome, dataNascimento, nacionalidade, idEscritor);
     }
 
     @Override
     public String toString() {
         return "Nome: " + getNome()
-                +"\nAno de nascimento: " + getAnoNascimento()
+                +"\nAno de nascimento: " + getDataNascimento()
                 +"\nPaís de origem: " + getNacionalidade();
     }
 

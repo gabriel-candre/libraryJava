@@ -3,12 +3,12 @@ package Entities;
 public abstract class Pessoa {
 
     private String nome;
-    private Integer anoNascimento;
+    private String dataNascimento;
     private String nacionalidade;
 
-    public Pessoa(String nome, int anoNascimento, String nacionalidade) {
+    public Pessoa(String nome, String dataNascimento, String nacionalidade) {
         this.nome = nome;
-        this.anoNascimento = anoNascimento;
+        this.dataNascimento = dataNascimento;
         this.nacionalidade = nacionalidade;
     }
 
@@ -20,12 +20,12 @@ public abstract class Pessoa {
         this.nome = nome;
     }
 
-    public Integer getAnoNascimento() {
-        return anoNascimento;
+    public String getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setAnoNascimento(Integer anoNascimento) {
-        this.anoNascimento = anoNascimento;
+    public void setDataNascimento(Integer anoNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public String getNacionalidade() {

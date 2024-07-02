@@ -9,8 +9,8 @@ public class Ator extends Pessoa{
 
     private Integer idAtor;
 
-    public Ator(String nome, int anoNascimento, String nacionalidade, int idAtor) {
-        super(nome, anoNascimento, nacionalidade);
+    public Ator(String nome, String dataNascimento, String nacionalidade, int idAtor) {
+        super(nome, dataNascimento, nacionalidade);
         this.idAtor = idAtor;
 
     }
@@ -24,22 +24,22 @@ public class Ator extends Pessoa{
     }
 
     public String toFile() {
-        return getNome() + ";" + getAnoNascimento() + ";" + getNacionalidade() + ";" + getIdAtor();
+        return getNome() + ";" + getDataNascimento() + ";" + getNacionalidade() + ";" + getIdAtor();
     }
 
     public static Ator fromFile(String fileString) {
         String[] fields = fileString.split(";");
         String nome = fields[0];
-        int anoNascimento = Integer.parseInt(fields[1]);
+        String dataNascimento = fields[1];
         String nacionalidade = fields[2];
         int idAtor = Integer.parseInt(fields[3]);
-        return new Ator(nome, anoNascimento, nacionalidade, idAtor);
+        return new Ator(nome, dataNascimento, nacionalidade, idAtor);
     }
 
     @Override
     public String toString() {
         return "Nome: " + getNome()
-                +"\nAno de nascimento: " + getAnoNascimento()
+                +"\nData de nascimento: " + getDataNascimento()
                 +"\nPaís de origem: " + getNacionalidade();
     }
 
