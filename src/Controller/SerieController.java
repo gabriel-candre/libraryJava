@@ -2,13 +2,15 @@ package Controller;
 
 import Entities.Filme;
 import Entities.Serie;
+import Enums.Disponibilidade;
 import Enums.Status;
+import Interfaces.ProcessaMidia;
 
 import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
 
-public class SerieController {
+public class SerieController implements ProcessaMidia {
 
     private List<Serie> series = new ArrayList<>();
     private String arquivo = "series.txt";
@@ -114,5 +116,24 @@ public class SerieController {
         }
 
         return null;
+    }
+
+    @Override
+    public void alugar(int id) {
+        for (Serie s : series) {
+            if (s.getIdSerie() == id) {
+                s.setDisponibilidade(Disponibilidade.valueOf("ALUGADO"));
+            }
+        }
+
+    }
+
+    @Override
+    public void retornar(int id) {
+        for (Serie s : series) {
+            if (s.getIdSerie() == id) {
+                s.setDisponibilidade(Disponibilidade.valueOf("DISPONIVEL"));
+            }
+        }
     }
 }

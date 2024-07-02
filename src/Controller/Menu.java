@@ -13,6 +13,7 @@ public class Menu {
     SerieController serieController = new SerieController();
     AtorController atorController = new AtorController();
     EscritorController escritorController = new EscritorController();
+    ClienteController clienteController = new ClienteController();
 
     Scanner sc = new Scanner(System.in);
 
@@ -86,6 +87,15 @@ public class Menu {
         System.out.println("3 - Buscar escritor por id");
         System.out.println("4 - Listar todos os escritores");
         System.out.println("0 - Voltar");
+        System.out.print("Opção: ");
+    }
+
+    public void menuClientes() {
+        System.out.println("1 - Cadastrar Cliente");
+        System.out.println("2 - Remover Cliente");
+        System.out.println("3 - Buscar Cliente por id");
+        System.out.println("4 - Listar todos os clientes");
+        System.out.println("5 - Aluguel ou retorno de mídia");
         System.out.print("Opção: ");
     }
 
@@ -501,6 +511,65 @@ public class Menu {
                         menuEscritores();
                         opcaoEscritores = sc.nextInt();
                         System.out.println("-----");
+                    }
+                    break;
+                case 7:
+                    menuClientes();
+                    int opcaoClientes = sc.nextInt();
+                    System.out.println("-----");
+                    switch (opcaoClientes) {
+                        case 1:
+                            System.out.print("ID Cliente: ");
+                            int idCliente = sc.nextInt();
+                            sc.nextLine();
+
+                            System.out.print("Nome: ");
+                            String nome = sc.nextLine();
+
+                            System.out.print("Data de nascimento: ");
+                            String dataNascimento = sc.next();
+
+                            System.out.print("Nacionalidade: ");
+                            String nacionalidade = sc.nextLine();
+
+                            System.out.print("Endereço: ");
+                            String endereco = sc.nextLine();
+
+                            System.out.print("Telefone");
+                            String telefone = sc.nextLine();
+
+                            System.out.print("E-mail: ");
+                            String email = sc.next();
+
+                            Cliente c = new Cliente(nome, dataNascimento, nacionalidade, idCliente, endereco, telefone, email);
+                            clienteController.adicionarCliente(c);
+                            break;
+                        case 2:
+                            System.out.print("ID do cliente a remover: ");
+                            int idRemove = sc.nextInt();
+                            clienteController.removerCliente(idRemove);
+                            System.out.println("-----");
+                            break;
+                        case 3:
+                            System.out.print("ID cliente: ");
+                            int idBusca = sc.nextInt();
+                            System.out.println(clienteController.getCliente(idBusca));
+                            System.out.println("-----");
+                            break;
+                        case 4:
+                            clienteController.listarClientes();
+                            break;
+                        case 5:
+                            System.out.print("ID cliente: ");
+                            int idClienteProcessa = sc.nextInt();
+
+                            break;
+                        default:
+                            System.out.println("Opção inválida! Tente novamente.");
+                            menuClientes();
+                            opcaoClientes = sc.nextInt();
+                            System.out.println("-----");
+                            break;
                     }
                     break;
                 default:

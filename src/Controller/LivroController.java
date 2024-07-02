@@ -2,13 +2,15 @@ package Controller;
 
 import Entities.Filme;
 import Entities.Livro;
+import Enums.Disponibilidade;
 import Enums.Status;
+import Interfaces.ProcessaMidia;
 
 import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
 
-public class LivroController {
+public class LivroController implements ProcessaMidia {
 
     private List<Livro> livros = new ArrayList<>();
     private String arquivo = "livros.txt";
@@ -114,5 +116,24 @@ public class LivroController {
         }
 
         return null;
+    }
+
+    @Override
+    public void alugar(int id) {
+        for (Livro l : livros) {
+            if (l.getIdLivro() == id) {
+                l.setDisponibilidade(Disponibilidade.valueOf("ALUGADO"));
+            }
+        }
+
+    }
+
+    @Override
+    public void retornar(int id) {
+        for (Livro l : livros) {
+            if (l.getIdLivro() == id) {
+                l.setDisponibilidade(Disponibilidade.valueOf("DISPONIVEL"));
+            }
+        }
     }
 }

@@ -2,9 +2,9 @@ package Entities;
 
 import Enums.Disponibilidade;
 import Enums.Status;
-import Interfaces.ProcessaMídia;
+import Interfaces.ProcessaMidia;
 
-public class Filme extends Midia implements ProcessaMídia {
+public class Filme extends Midia{
 
     private Integer idFilme;
     private Integer duracao;
@@ -61,6 +61,10 @@ public class Filme extends Midia implements ProcessaMídia {
         this.status = status;
     }
 
+    public void setDisponibilidade(Disponibilidade disponibilidade) {
+        this.disponibilidade = disponibilidade;
+    }
+
     public String toFile() {
         return getTitulo() + ";" + getAno() + ";" + getGenero() + ";" + getStatus() + ";" + getIdFilme() + ";" + getDuracao()
                 + ";" + getDiretor() + ";" + getPublicadora() + ";" + getDisponibilidade();
@@ -80,16 +84,7 @@ public class Filme extends Midia implements ProcessaMídia {
         return new Filme(titulo, ano, genero, status, disponibilidade, idFilme, duracao, diretor, publicadora);
     }
 
-    @Override
-    public void alugar() {
-        this.disponibilidade = Disponibilidade.valueOf("ALUGADO");
 
-    }
-
-    @Override
-    public void retornar() {
-        this.disponibilidade = Disponibilidade.valueOf("DISPONIVEL");
-    }
 
     @Override
     public String toString() {

@@ -1,14 +1,16 @@
 package Controller;
 
 import Entities.Filme;
+import Enums.Disponibilidade;
 import Enums.Status;
+import Interfaces.ProcessaMidia;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FilmeController {
+public class FilmeController implements ProcessaMidia {
     Scanner sc = new Scanner(System.in);
 
     private List<Filme> filmes = new ArrayList<>();
@@ -117,6 +119,27 @@ public class FilmeController {
         }
 
         return null;
+    }
+
+    @Override
+    public void alugar(int id) {
+        for (Filme f : filmes) {
+            if (f.getIdFilme() == id) {
+                f.setDisponibilidade(Disponibilidade.valueOf("ALUGADO"));
+                System.out.println("Nova disponibilidade: " + f.getDisponibilidade());
+            }
+        }
+
+    }
+
+    @Override
+    public void retornar(int id) {
+        for (Filme f : filmes) {
+            if (f.getIdFilme() == id) {
+                f.setDisponibilidade(Disponibilidade.valueOf("DISPONIVEL"));
+                System.out.println("Nova disponibilidade: " + f.getDisponibilidade());
+            }
+        }
     }
 
 }

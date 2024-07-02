@@ -2,13 +2,15 @@ package Controller;
 
 import Entities.Filme;
 import Entities.Jogo;
+import Enums.Disponibilidade;
 import Enums.Status;
+import Interfaces.ProcessaMidia;
 
 import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
 
-public class JogoController {
+public class JogoController implements ProcessaMidia {
 
     private List<Jogo> jogos = new ArrayList<>();
     private String arquivo = "jogos.txt";
@@ -114,5 +116,24 @@ public class JogoController {
         }
 
         return null;
+    }
+
+    @Override
+    public void alugar(int id) {
+        for (Jogo j : jogos) {
+            if (j.getIdJogo() == id) {
+                j.setDisponibilidade(Disponibilidade.valueOf("ALUGADO"));
+            }
+        }
+
+    }
+
+    @Override
+    public void retornar(int id) {
+        for (Jogo j : jogos) {
+            if (j.getIdJogo() == id) {
+                j.setDisponibilidade(Disponibilidade.valueOf("DISPONIVEL"));
+            }
+        }
     }
 }

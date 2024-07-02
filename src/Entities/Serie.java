@@ -2,9 +2,9 @@ package Entities;
 
 import Enums.Disponibilidade;
 import Enums.Status;
-import Interfaces.ProcessaMídia;
+import Interfaces.ProcessaMidia;
 
-public class Serie extends Midia implements ProcessaMídia {
+public class Serie extends Midia {
 
     private Integer idSerie;
     private Integer temporada;
@@ -46,6 +46,14 @@ public class Serie extends Midia implements ProcessaMídia {
         this.episodios = episodios;
     }
 
+    public void setStatus (Status status) {
+        this.status = status;
+    }
+
+    public void setDisponibilidade(Disponibilidade disponibilidade) {
+        this.disponibilidade = disponibilidade;
+    }
+
     public String toFile() {
         return getTitulo() + ";" + getAno() + ";" + getGenero() + ";" + getStatus() + ";" + getIdSerie() + ";" + getTemporada()
                 + ";" + getEpisodios() + ";" + getDisponibilidade();
@@ -62,20 +70,6 @@ public class Serie extends Midia implements ProcessaMídia {
         int episodios = Integer.parseInt(fields[6]);
         Disponibilidade disponibilidade = Disponibilidade.valueOf(fields[7]);
         return new Serie(titulo, ano, genero, status, disponibilidade, idSerie, temporada, episodios);
-    }
-
-    public void setStatus (Status status) {
-        this.status = status;
-    }
-
-    @Override
-    public void alugar() {
-        this.disponibilidade = Disponibilidade.valueOf("Alugado");
-    }
-
-    @Override
-    public void retornar() {
-        this.disponibilidade = Disponibilidade.valueOf("DISPONIVEL");
     }
 
     @Override
