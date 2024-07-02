@@ -2,13 +2,17 @@ package Entities;
 
 import Enums.Disponibilidade;
 import Enums.Status;
-import Interfaces.AlugarMidia;
+import Interfaces.ProcessaMídia;
 
-public class Livro extends Midia implements AlugarMidia {
+public class Livro extends Midia implements ProcessaMídia {
 
     private Integer idLivro;
     private Integer paginas;
     private String editora;
+
+    public Livro() {
+        super();
+    }
 
     public Livro(String titulo, int ano, String genero, Status status, Disponibilidade disponibilidade, int idLivro, int paginas,
                  String editora) {
@@ -65,9 +69,14 @@ public class Livro extends Midia implements AlugarMidia {
     }
 
     @Override
-    public String alugar() {
-        this.status = Status.valueOf("Finalizado");
-        return "Livro - " + getTitulo() + " - Finalizado!";
+    public void alugar() {
+        this.disponibilidade = Disponibilidade.valueOf("Alugado");
+
+    }
+
+    @Override
+    public void retornar() {
+        this.disponibilidade = Disponibilidade.valueOf("DISPONIVEL");
     }
 
     @Override

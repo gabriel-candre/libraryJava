@@ -19,6 +19,10 @@ public abstract class Midia {
         this.disponibilidade = disponibilidade;
     }
 
+    public Midia() {
+
+    }
+
     public String getTitulo() {
         return titulo;
     }

@@ -1,6 +1,17 @@
 package Entities;
 
-public class Cliente extends Pessoa{
+import Interfaces.ProcessaMídia;
+
+import java.util.Scanner;
+
+public class Cliente extends Pessoa implements ProcessaMídia {
+
+    Scanner sc = new Scanner(System.in);
+
+    Filme f = new Filme();
+    Jogo j = new Jogo();
+    Livro l = new Livro();
+    Serie s = new Serie();
 
     private Integer idCliente;
     private String endereco;
@@ -55,5 +66,45 @@ public class Cliente extends Pessoa{
                 +"\nE-mail: " + getEmail()
                 +"\nTelefone: " + getTelefone()
                 +"\nEndereço: " + getEndereco();
+    }
+
+    @Override
+    public void alugar() {
+        System.out.println("1 - Processar Filme");
+        System.out.println("2 - Processar Jogo");
+        System.out.println("3 - Processar Livro");
+        System.out.println("4 - Processar Série");
+        System.out.print("Opção: ");
+        int opcao = sc.nextInt();
+        switch (opcao) {
+            case 1:
+                System.out.println("1 - Alugar");
+                System.out.println("2 - Retornar");
+                System.out.print("Opção: ");
+                int opcao2 = sc.nextInt();
+                if (opcao2 == 1) {
+                    f.alugar();
+                } else {
+                    f.retornar();
+                }
+                break;
+            case 2:
+                j.alugar();
+                break;
+            case 3:
+                l.alugar();
+                break;
+            case 4:
+                s.alugar();
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    @Override
+    public void retornar() {
+
     }
 }
