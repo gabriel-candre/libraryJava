@@ -77,7 +77,8 @@ public class Serie extends Midia implements AlugarMidia {
                 +"\nGênero: " +getGenero()
                 +"\nTemporada: " + getTemporada()
                 +"\nEpisódios: " + getEpisodios()
-                +"\nStatus: " + getStatus();
+                +"\nStatus: " + getStatus()
+                +"\nDisponibilidade: " + getDisponibilidade();
     }
 
 }

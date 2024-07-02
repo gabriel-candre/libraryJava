@@ -77,7 +77,8 @@ public class Livro extends Midia implements AlugarMidia {
                 +"\nGênero: " + getGenero()
                 +"\nPáginas: " + getPaginas()
                 +"\nEditora: " + getEditora()
-                +"\nStatus: " + getStatus();
+                +"\nStatus: " + getStatus()
+                +"\nDisponibilidade: " + getDisponibilidade();
     }
 
 }

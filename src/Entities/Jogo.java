@@ -63,7 +63,8 @@ public class Jogo extends Midia implements AlugarMidia {
                 +"\nAno: " + getAno()
                 +"\nGênero: " + getGenero()
                 +"\nPublicadora: " + getPublicadora()
-                +"\nStatus: " + getStatus();
+                +"\nStatus: " + getStatus()
+                +"\nDisponibilidade: " + getDisponibilidade();
 
     }
 }
