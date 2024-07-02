@@ -1,17 +1,18 @@
 package Entities;
 
+import Enums.Disponibilidade;
 import Enums.Status;
-import Interfaces.ConsumirMidia;
+import Interfaces.AlugarMidia;
 
-public class Serie extends Midia implements ConsumirMidia{
+public class Serie extends Midia implements AlugarMidia {
 
     private Integer idSerie;
     private Integer temporada;
     private Integer episodios;
 
-    public Serie(String titulo, int ano, String genero, Status status, int idSerie, int temporada,
+    public Serie(String titulo, int ano, String genero, Status status, Disponibilidade disponibilidade, int idSerie, int temporada,
                  int episodios) {
-        super(titulo, ano, genero, status);
+        super(titulo, ano, genero, status, disponibilidade);
         this.idSerie = idSerie;
         this.temporada = temporada;
         this.episodios = episodios;
@@ -43,7 +44,7 @@ public class Serie extends Midia implements ConsumirMidia{
 
     public String toFile() {
         return getTitulo() + ";" + getAno() + ";" + getGenero() + ";" + getStatus() + ";" + getIdSerie() + ";" + getTemporada()
-                + ";" + getEpisodios();
+                + ";" + getEpisodios() + ";" + getDisponibilidade();
     }
 
     public static Serie fromFile(String fileString) {
@@ -55,7 +56,8 @@ public class Serie extends Midia implements ConsumirMidia{
         int idSerie = Integer.parseInt(fields[4]);
         int temporada = Integer.parseInt(fields[5]);
         int episodios = Integer.parseInt(fields[6]);
-        return new Serie(titulo, ano, genero, status, idSerie, temporada, episodios);
+        Disponibilidade disponibilidade = Disponibilidade.valueOf(fields[7]);
+        return new Serie(titulo, ano, genero, status, disponibilidade, idSerie, temporada, episodios);
     }
 
     public void setStatus (Status status) {
@@ -63,7 +65,7 @@ public class Serie extends Midia implements ConsumirMidia{
     }
 
     @Override
-    public String consumir() {
+    public String alugar() {
         this.status = Status.valueOf("Finalizada");
         return "Séria - " + getTitulo() + " - Finalizada!";
     }

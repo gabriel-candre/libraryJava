@@ -1,18 +1,19 @@
 package Entities;
 
+import Enums.Disponibilidade;
 import Enums.Status;
-import Interfaces.ConsumirMidia;
+import Interfaces.AlugarMidia;
 
-public class Filme extends Midia implements ConsumirMidia{
+public class Filme extends Midia implements AlugarMidia {
 
     private Integer idFilme;
     private Integer duracao;
     private String diretor;
     private String publicadora;
 
-    public Filme(String titulo, int ano, String genero, Status status, int idFilme, int duracao, String diretor,
-                 String publicadora) {
-        super(titulo, ano, genero, status);
+    public Filme(String titulo, Integer ano, String genero, Status status, Disponibilidade disponibilidade, Integer idFilme, Integer duracao,
+                 String diretor, String publicadora) {
+        super(titulo, ano, genero, status, disponibilidade);
         this.idFilme = idFilme;
         this.duracao = duracao;
         this.diretor = diretor;
@@ -57,7 +58,7 @@ public class Filme extends Midia implements ConsumirMidia{
 
     public String toFile() {
         return getTitulo() + ";" + getAno() + ";" + getGenero() + ";" + getStatus() + ";" + getIdFilme() + ";" + getDuracao()
-                + ";" + getDiretor() + ";" + getPublicadora();
+                + ";" + getDiretor() + ";" + getPublicadora() + ";" + getDisponibilidade();
     }
 
     public static Filme fromFile(String fileString) {
@@ -70,11 +71,12 @@ public class Filme extends Midia implements ConsumirMidia{
         int duracao = Integer.parseInt(fields[5]);
         String diretor = fields[6];
         String publicadora = fields[7];
-        return new Filme(titulo, ano, genero, status, idFilme, duracao, diretor, publicadora);
+        Disponibilidade disponibilidade = Disponibilidade.valueOf(fields[8]);
+        return new Filme(titulo, ano, genero, status, disponibilidade, idFilme, duracao, diretor, publicadora);
     }
 
     @Override
-    public String consumir() {
+    public String alugar() {
         this.status = Status.valueOf("Finalizado");
         return "Filme - " + getTitulo() + " - Assistido!";
     }
@@ -86,7 +88,8 @@ public class Filme extends Midia implements ConsumirMidia{
                 +"\nGênero: " + getGenero()
                 +"\nDiretor(a): " + getDiretor()
                 +"\nDuração (min): " + getDuracao()
-                +"\nStatus: " + getStatus();
+                +"\nStatus: " + getStatus()
+                +"\nDisponibilidade: " + getDisponibilidade();
     }
 
 }

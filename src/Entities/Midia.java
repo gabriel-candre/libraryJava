@@ -1,5 +1,6 @@
 package Entities;
 
+import Enums.Disponibilidade;
 import Enums.Status;
 
 public abstract class Midia {
@@ -8,12 +9,14 @@ public abstract class Midia {
     protected Integer ano;
     protected String genero;
     protected Status status;
+    protected Disponibilidade disponibilidade;
 
-    public Midia(String titulo, int ano, String genero, Status status) {
+    public Midia(String titulo, Integer ano, String genero, Status status, Disponibilidade disponibilidade) {
         this.titulo = titulo;
         this.ano = ano;
         this.genero = genero;
         this.status = status;
+        this.disponibilidade = disponibilidade;
     }
 
     public String getTitulo() {
@@ -25,11 +28,10 @@ public abstract class Midia {
     }
 
     public Integer getAno() {
-
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(Integer ano) {
         this.ano = ano;
     }
 
@@ -49,5 +51,11 @@ public abstract class Midia {
         this.status = status;
     }
 
+    public Disponibilidade getDisponibilidade() {
+        return disponibilidade;
+    }
 
+    public void setDisponibilidade(Disponibilidade disponibilidade) {
+        this.disponibilidade = disponibilidade;
+    }
 }

@@ -1,6 +1,7 @@
 package Controller;
 
 import Entities.*;
+import Enums.Disponibilidade;
 import Enums.Status;
 import java.util.Scanner;
 
@@ -124,8 +125,8 @@ public class Menu {
 
                                 System.out.println("-----");
 
-                                Filme f = new Filme(tituloFilme, anoFilme, generoFilme, Status.valueOf("ADICIONADO"), idFilme, duracao, diretorFilme,
-                                        publicadora);
+                                Filme f = new Filme(tituloFilme, anoFilme, generoFilme, Status.valueOf("ADICIONADO"), Disponibilidade.valueOf("DISPONIVEL"),
+                                        idFilme, duracao, diretorFilme, publicadora);
                                 filmeController.adicionarFilme(f);
                                 break;
                             case 2:
@@ -198,7 +199,8 @@ public class Menu {
                                 String publicadoraJogo = sc.nextLine();
                                 System.out.println("-----");
 
-                                Jogo j = new Jogo(tituloJogo, anoJogo, generoJogo, Status.valueOf("ADICIONADO"), idJogo, publicadoraJogo);
+                                Jogo j = new Jogo(tituloJogo, anoJogo, generoJogo, Status.valueOf("ADICIONADO"), Disponibilidade.valueOf("DISPONIVEL"),
+                                        idJogo, publicadoraJogo);
                                 jogoController.adicionarJogo(j);
                                 break;
                             case 2:
@@ -274,7 +276,8 @@ public class Menu {
                                 String editora = sc.nextLine();
                                 System.out.println("-----");
 
-                                Livro l = new Livro(tituloLivro, anoLivro, generoLivro, Status.valueOf("ADICIONADO"), idLivro, paginas, editora);
+                                Livro l = new Livro(tituloLivro, anoLivro, generoLivro, Status.valueOf("ADICIONADO"), Disponibilidade.valueOf("DISPONIVEL"),
+                                        idLivro, paginas, editora);
                                 livroController.adicionarLivro(l);
                                 break;
                             case 2:
@@ -350,7 +353,8 @@ public class Menu {
                                 int episodios = sc.nextInt();
                                 System.out.println("-----");
 
-                                Serie s = new Serie(tituloSerie, anoSerie, generoSerie, Status.valueOf("ADICIONADO"), idSerie, temporada, episodios);
+                                Serie s = new Serie(tituloSerie, anoSerie, generoSerie, Status.valueOf("ADICIONADO"), Disponibilidade.valueOf("DISPONIVEL"),
+                                        idSerie, temporada, episodios);
                                 serieController.adicionarSerie(s);
                                 break;
                             case 2:
@@ -411,15 +415,14 @@ public class Menu {
                                 System.out.print("Nome: ");
                                 String nomeAtor = sc.nextLine();
 
-                                System.out.print("Ano nascimento: ");
-                                int anoAtor = sc.nextInt();
-                                sc.nextLine();
+                                System.out.print("Data de nascimento: ");
+                                String nascimentoAtor = sc.next();
 
                                 System.out.print("País de nascimento: ");
                                 String nacionalidadeAtor = sc.nextLine();
                                 System.out.println("-----");
 
-                                Ator a = new Ator(nomeAtor, anoAtor, nacionalidadeAtor, idAtor);
+                                Ator a = new Ator(nomeAtor, nascimentoAtor, nacionalidadeAtor, idAtor);
                                 atorController.adicionarAtor(a);
                                 break;
                             case 2:
@@ -463,15 +466,14 @@ public class Menu {
                                 System.out.print("Nome: ");
                                 String nomeEscritor = sc.nextLine();
 
-                                System.out.print("Ano nascimento: ");
-                                int anoEscritor = sc.nextInt();
-                                sc.nextLine();
+                                System.out.print("Data de nascimento: ");
+                                String nascimentoEscritor = sc.next();
 
                                 System.out.print("País de nascimento: ");
                                 String nacionalidadeEscritor = sc.nextLine();
                                 System.out.println("-----");
 
-                                Escritor e = new Escritor(nomeEscritor, anoEscritor, nacionalidadeEscritor, idEscritor);
+                                Escritor e = new Escritor(nomeEscritor, nascimentoEscritor, nacionalidadeEscritor, idEscritor);
                                 escritorController.adicionarEscritor(e);
                                 break;
                             case 2:

@@ -1,17 +1,18 @@
 package Entities;
 
+import Enums.Disponibilidade;
 import Enums.Status;
-import Interfaces.ConsumirMidia;
+import Interfaces.AlugarMidia;
 
-public class Livro extends Midia implements ConsumirMidia{
+public class Livro extends Midia implements AlugarMidia {
 
     private Integer idLivro;
     private Integer paginas;
     private String editora;
 
-    public Livro(String titulo, int ano, String genero, Status status, int idLivro, int paginas,
+    public Livro(String titulo, int ano, String genero, Status status, Disponibilidade disponibilidade, int idLivro, int paginas,
                  String editora) {
-        super(titulo, ano, genero, status);
+        super(titulo, ano, genero, status, disponibilidade);
         this.idLivro = idLivro;
         this.paginas = paginas;
         this.editora = editora;
@@ -43,7 +44,7 @@ public class Livro extends Midia implements ConsumirMidia{
 
     public String toFile() {
         return getTitulo() + ";" + getAno() + ";" + getGenero() + ";" + getStatus() + ";" + getIdLivro() + ";" + getPaginas()
-                + ";" + getEditora();
+                + ";" + getEditora() + ";" + getDisponibilidade();
     }
 
     public static Livro fromFile(String fileString) {
@@ -55,7 +56,8 @@ public class Livro extends Midia implements ConsumirMidia{
         int idLivro = Integer.parseInt(fields[4]);
         int paginas = Integer.parseInt(fields[5]);
         String editora = fields[6];
-        return new Livro(titulo, ano, genero, status, idLivro, paginas, editora);
+        Disponibilidade disponibilidade = Disponibilidade.valueOf(fields[7]);
+        return new Livro(titulo, ano, genero, status, disponibilidade, idLivro, paginas, editora);
     }
 
     public void setStatus (Status status) {
@@ -63,7 +65,7 @@ public class Livro extends Midia implements ConsumirMidia{
     }
 
     @Override
-    public String consumir() {
+    public String alugar() {
         this.status = Status.valueOf("Finalizado");
         return "Livro - " + getTitulo() + " - Finalizado!";
     }

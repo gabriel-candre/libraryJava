@@ -1,15 +1,16 @@
 package Entities;
 
+import Enums.Disponibilidade;
 import Enums.Status;
-import Interfaces.ConsumirMidia;
+import Interfaces.AlugarMidia;
 
-public class Jogo extends Midia implements ConsumirMidia{
+public class Jogo extends Midia implements AlugarMidia {
 
     private Integer idJogo;
     private String publicadora;
 
-    public Jogo(String titulo, int ano, String genero, Status status, int idJogo, String publicadora) {
-        super(titulo, ano, genero, status);
+    public Jogo(String titulo, int ano, String genero, Status status, Disponibilidade disponibilidade, int idJogo, String publicadora) {
+        super(titulo, ano, genero, status, disponibilidade);
         this.idJogo = idJogo;
         this.publicadora = publicadora;
     }
@@ -31,7 +32,7 @@ public class Jogo extends Midia implements ConsumirMidia{
     }
 
     public String toFile() {
-        return getTitulo() + ";" + getAno() + ";" + getGenero() + ";" + getStatus() + ";" + getIdJogo() + ";" + getPublicadora();
+        return getTitulo() + ";" + getAno() + ";" + getGenero() + ";" + getStatus() + ";" + getIdJogo() + ";" + getPublicadora() + ";" + getDisponibilidade();
     }
 
     public static Jogo fromFile(String fileString) {
@@ -42,7 +43,8 @@ public class Jogo extends Midia implements ConsumirMidia{
         Status status = Status.valueOf(fields[3]);
         int idJogo = Integer.parseInt(fields[4]);
         String publicadora = fields[5];
-        return new Jogo(titulo, ano, genero, status, idJogo, publicadora);
+        Disponibilidade disponibilidade = Disponibilidade.valueOf(fields[6]);
+        return new Jogo(titulo, ano, genero, status, disponibilidade, idJogo, publicadora);
     }
 
     public void setStatus(Status status) {
@@ -50,7 +52,7 @@ public class Jogo extends Midia implements ConsumirMidia{
     }
 
     @Override
-    public String consumir() {
+    public String alugar() {
         this.status = Status.valueOf("Finalizado");
         return "Jogo - " + getTitulo() + " - Finalizado!";
     }
