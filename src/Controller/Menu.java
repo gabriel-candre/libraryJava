@@ -28,6 +28,7 @@ public class Menu {
         System.out.println("4 - Gerenciar Séries");
         System.out.println("5 - Gerenciar Atores");
         System.out.println("6 - Gerenciar Escritores");
+        System.out.println("7 - Gerenciar Clientes");
         System.out.println("0 - Finalizar");
         System.out.print("Opção: ");
     }
@@ -528,15 +529,18 @@ public class Menu {
 
                             System.out.print("Data de nascimento: ");
                             String dataNascimento = sc.next();
+                            sc.nextLine();
 
                             System.out.print("Nacionalidade: ");
                             String nacionalidade = sc.nextLine();
 
+
                             System.out.print("Endereço: ");
                             String endereco = sc.nextLine();
 
-                            System.out.print("Telefone");
+                            System.out.print("Telefone: ");
                             String telefone = sc.nextLine();
+
 
                             System.out.print("E-mail: ");
                             String email = sc.next();
@@ -560,9 +564,7 @@ public class Menu {
                             clienteController.listarClientes();
                             break;
                         case 5:
-                            System.out.print("ID cliente: ");
-                            int idClienteProcessa = sc.nextInt();
-
+                            clienteController.alugar();
                             break;
                         default:
                             System.out.println("Opção inválida! Tente novamente.");

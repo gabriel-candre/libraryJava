@@ -125,7 +125,8 @@ public class FilmeController implements ProcessaMidia {
     public void alugar(int id) {
         for (Filme f : filmes) {
             if (f.getIdFilme() == id) {
-                f.setDisponibilidade(Disponibilidade.valueOf("ALUGADO"));
+                f.setDisponibilidade(Disponibilidade.ALUGADO);
+                salvarFilme();
                 System.out.println("Nova disponibilidade: " + f.getDisponibilidade());
             }
         }
@@ -136,7 +137,8 @@ public class FilmeController implements ProcessaMidia {
     public void retornar(int id) {
         for (Filme f : filmes) {
             if (f.getIdFilme() == id) {
-                f.setDisponibilidade(Disponibilidade.valueOf("DISPONIVEL"));
+                f.setDisponibilidade(Disponibilidade.DISPONIVEL);
+                salvarFilme();
                 System.out.println("Nova disponibilidade: " + f.getDisponibilidade());
             }
         }
