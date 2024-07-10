@@ -124,6 +124,7 @@ public class ClienteController {
                         int idProcessa = sc.nextInt();
                         System.out.println("1 - Alugar");
                         System.out.println("2 - Retornar");
+                        System.out.print("Opção: ");
                         int opcaoProcessa = sc.nextInt();
                         if (opcaoProcessa == 1) {
                             f.alugar(idProcessa);
@@ -136,6 +137,7 @@ public class ClienteController {
                         idProcessa = sc.nextInt();
                         System.out.println("1 - Alugar");
                         System.out.println("2 - Retornar");
+                        System.out.print("Opção: ");
                         opcaoProcessa = sc.nextInt();
                         if (opcaoProcessa == 1) {
                             j.alugar(idProcessa);
@@ -148,6 +150,7 @@ public class ClienteController {
                         idProcessa = sc.nextInt();
                         System.out.println("1 - Alugar");
                         System.out.println("2 - Retornar");
+                        System.out.print("Opção: ");
                         opcaoProcessa = sc.nextInt();
                         if (opcaoProcessa == 1) {
                             l.alugar(idProcessa);
@@ -160,6 +163,7 @@ public class ClienteController {
                         idProcessa = sc.nextInt();
                         System.out.println("1 - Alugar");
                         System.out.println("2 - Retornar");
+                        System.out.print("Opção: ");
                         opcaoProcessa = sc.nextInt();
                         if (opcaoProcessa == 1) {
                             s.alugar(idProcessa);
