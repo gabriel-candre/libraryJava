@@ -122,7 +122,16 @@ public class LivroController implements ProcessaMidia {
     public void alugar(int id) {
         for (Livro l : livros) {
             if (l.getIdLivro() == id) {
-                l.setDisponibilidade(Disponibilidade.valueOf("ALUGADO"));
+                if (l.getDisponibilidade().equals(Disponibilidade.ALUGADO)) {
+                    System.out.println("Este livro está indisponível no momento(alugado)!");
+                    System.out.println("-----");
+                } else {
+                    l.setDisponibilidade(Disponibilidade.valueOf("ALUGADO"));
+                    salvarLivro();
+                    System.out.println("Nova disponibilidade: " + l.getDisponibilidade());
+                    System.out.println("-----");
+                }
+
             }
         }
 
@@ -133,6 +142,9 @@ public class LivroController implements ProcessaMidia {
         for (Livro l : livros) {
             if (l.getIdLivro() == id) {
                 l.setDisponibilidade(Disponibilidade.valueOf("DISPONIVEL"));
+                salvarLivro();
+                System.out.println("Nova disponibilidade: " + l.getDisponibilidade());
+                System.out.println("-----");
             }
         }
     }

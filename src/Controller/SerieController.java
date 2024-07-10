@@ -122,7 +122,16 @@ public class SerieController implements ProcessaMidia {
     public void alugar(int id) {
         for (Serie s : series) {
             if (s.getIdSerie() == id) {
-                s.setDisponibilidade(Disponibilidade.valueOf("ALUGADO"));
+                if (s.getDisponibilidade().equals(Disponibilidade.ALUGADO)) {
+                    System.out.println("Esta série está indisponível no momento(alugada)!");
+                    System.out.println("-----");
+                } else {
+                    s.setDisponibilidade(Disponibilidade.valueOf("ALUGADO"));
+                    salvarSerie();
+                    System.out.println("Nova disponibilidade: " + s.getDisponibilidade());
+                    System.out.println("-----");
+                }
+
             }
         }
 
@@ -133,6 +142,9 @@ public class SerieController implements ProcessaMidia {
         for (Serie s : series) {
             if (s.getIdSerie() == id) {
                 s.setDisponibilidade(Disponibilidade.valueOf("DISPONIVEL"));
+                salvarSerie();
+                System.out.println("Nova disponibilidade: " + s.getDisponibilidade());
+                System.out.println("-----");
             }
         }
     }

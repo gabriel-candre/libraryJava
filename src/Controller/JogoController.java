@@ -122,7 +122,15 @@ public class JogoController implements ProcessaMidia {
     public void alugar(int id) {
         for (Jogo j : jogos) {
             if (j.getIdJogo() == id) {
-                j.setDisponibilidade(Disponibilidade.valueOf("ALUGADO"));
+                if (j.getDisponibilidade().equals(Disponibilidade.ALUGADO)) {
+                    System.out.println("Este jogo está indisponível no momento(alugado)!");
+                    System.out.println("-----");
+                } else {
+                    j.setDisponibilidade(Disponibilidade.valueOf("ALUGADO"));
+                    salvarJogo();
+                    System.out.println("Nova disponibilidade: " + j.getDisponibilidade());
+                    System.out.println("-----");
+                }
             }
         }
 
@@ -133,6 +141,9 @@ public class JogoController implements ProcessaMidia {
         for (Jogo j : jogos) {
             if (j.getIdJogo() == id) {
                 j.setDisponibilidade(Disponibilidade.valueOf("DISPONIVEL"));
+                salvarJogo();
+                System.out.println("Nova disponibilidade: " + j.getDisponibilidade());
+                System.out.println("-----");
             }
         }
     }
